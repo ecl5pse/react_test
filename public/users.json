@@ -1,0 +1,19 @@
+[
+  {
+    "id": "1",
+    "firstName": "test",
+    "lastName": "test",
+    "imageSrc": "https://risovach.ru/upload/2019/05/mem/teper-ya-znayu-kung-fu_208779894_orig_.png"
+  },
+  {
+    "id": "2",
+    "firstName": "TEST",
+    "imageSrc": "https://www.meme-arsenal.com/memes/05b7ab795ebcb62d4f3f932ffbbb5338.jpg"
+  },
+  {
+    "id": "3",
+    "firstName": "Test",
+    "lastName": "test",
+    "imageSrc": "gdugadja"
+  }
+]

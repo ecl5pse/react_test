@@ -1,10 +1,10 @@
 import React from 'react';
-import Timer from './componets/Timer'
+import UsersList from './componets/UsersList'
 
-function App(props) {
+function App() {
 
+  return <UsersList/>
 
-  return<Timer/>;
 }
 
-export  default  App;
+export default App;
