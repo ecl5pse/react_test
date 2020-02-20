@@ -1,7 +1,8 @@
-import React       from 'react';
-import ColorHash   from 'color-hash';
-import {loadJson} from '../../utils';
-import  style from './Avatar.module.css'
+import React        from 'react';
+import ColorHash    from 'color-hash';
+import PropTypse from 'prop-types';
+
+
 
 const  colorHash = new ColorHash();
 
@@ -12,7 +13,6 @@ class Avatar extends React.Component {
     super(props);
     this.state = {
       error: null,
-      items:[]
     };
   }
 
@@ -21,44 +21,44 @@ onErrorHandler = (e)=>{
     this.setState({
       error: e.error,
     });
-
-
   };
 
-  componentDidMount() {
 
-    loadJson('./users.json')
-    .then(response => {
-      this.setState({
-                      items: response,
-                      error: false,
-                    });
-    })
-        .then(e => {
-      this.setState({
-                      error: true,
-                    });
-    });
-  }
+
 
 
 
   render() {
 
-    if (this.state.error)
-    {
-      return <div style={{}}>{}</div>;
-    }
-    else {
+    if (this.state.error) {
+      return <div></div>;
+    } else {
       return (
-          this.state.items.map(
-              item => (
-                  <img key={item.id} className={style} src={item.imageSrc} alt = {colorHash.hash(item.firstName + item.lastName)}/>
-              ))
+
+          <img {...this.props} onError={this.onErrorHandler}/>
       );
+
     }
 
   };
 }
+
+Avatar.propsTypes ={
+
+  class:PropTypse.string.isRequired,
+  src:PropTypse.string.isRequired,
+  alt:PropTypse.string.isRequired,
+  firstName:PropTypse.string.isRequired,
+  lastName:PropTypse.string.isRequired,
+
+};
+
+
+Avatar.defaultProps = {
+
+};
+
+
+
 
 export default Avatar;

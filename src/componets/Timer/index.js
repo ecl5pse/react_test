@@ -46,7 +46,7 @@ handleClick = (e)=>{
           </button>
           <button onClick={()=>{
             this.setState({
-              isRun:
+       /*       isRun:*/
             })
           }}>
 

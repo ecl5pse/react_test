@@ -1,9 +1,18 @@
 import React from 'react';
-import UsersList from './componets/UsersList'
+import UserCard from './componets/UserCard'
+
+
+const  testUser = {
+  firstName :'Test',
+  lastName:'Test',
+  email:"test@test.com",
+  profileImage:'https://image.shutterstock.com/image-vector/male-silhouette-avatar-profile-picture-260nw-199246382.jpg'
+};
+
 
 function App() {
 
-  return <UsersList/>
+  return <UserCard user = {testUser}/>
 
 }
 
