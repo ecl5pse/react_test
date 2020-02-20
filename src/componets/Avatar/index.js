@@ -25,35 +25,38 @@ onErrorHandler = (e)=>{
 
   };
 
-componentDidMount() {
-   loadJson('./users.json')
-   .then(res=> { this.setState({
-                          items: res.items,
-                          error: false
-         })
-   }),
-       (error) =>{
-         this.setState({
-           error: error
-                       })
-   }
-}
+  componentDidMount() {
+    loadJson('./users.json')
+    .then(res => {
+      this.setState({
+                      items: res.items,
+                      error: false,
+                    });
+    })
+         .catch(e => {
+      this.setState({
+                      error: true,
+                    });
+    });
+  }
+
+
 
   render() {
 
     if (this.state.error) {
+
       return <div style={{}}>{}</div>;
     } else {
       return (
-
           this.state.items.map(
-              item=> (
+              item => (
                   <img key={item.id} className={style} src={item.imageSrc} alt ={colorHash.hash(item.firstName + item.lastName)}/>
               ))
       );
     }
 
-  }
+  };
 }
 
 export default Avatar;
