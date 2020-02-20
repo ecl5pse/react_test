@@ -19,21 +19,22 @@ class Avatar extends React.Component {
 
 onErrorHandler = (e)=>{
     this.setState({
-      error:e.error,
+      error: e.error,
     });
 
 
   };
 
   componentDidMount() {
+
     loadJson('./users.json')
-    .then(res => {
+    .then(response => {
       this.setState({
-                      items: res.items,
+                      items: response,
                       error: false,
                     });
     })
-         .catch(e => {
+        .then(e => {
       this.setState({
                       error: true,
                     });
@@ -44,14 +45,15 @@ onErrorHandler = (e)=>{
 
   render() {
 
-    if (this.state.error) {
-
+    if (this.state.error)
+    {
       return <div style={{}}>{}</div>;
-    } else {
+    }
+    else {
       return (
           this.state.items.map(
               item => (
-                  <img key={item.id} className={style} src={item.imageSrc} alt ={colorHash.hash(item.firstName + item.lastName)}/>
+                  <img key={item.id} className={style} src={item.imageSrc} alt = {colorHash.hash(item.firstName + item.lastName)}/>
               ))
       );
     }
