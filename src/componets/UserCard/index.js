@@ -1,25 +1,14 @@
-import React , {Fragment} from 'react';
+import React from 'react';
 import  styles from './UserCard.module.css'
 
 function UserCard (props) {
-  return(
-    <Fragment>
-        <div style={styles}>
-          {
-            props.user.firstName
-          }
+   const {user} = props;
+   return(
+       <div className={styles.container}>
+         <div className={styles.fullName}>{`${user.firstName} ${user.lastName}`}</div>
+         <img  className={styles.profileImage} src={user.profileImage} alt="user profile"/>
+       </div>
+   )
 
-          {
-            props.user.lastName
-          }
-        </div>
-
-      <div>
-        {
-          props.user.email
-        }
-      </div>
-        <img src={props.user.profileImage}/>
-    </Fragment>)
 }
 export default UserCard;

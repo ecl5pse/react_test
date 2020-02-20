@@ -1,0 +1,24 @@
+.container{
+    margin-top: 20px;
+    max-width: 450px;
+    max-height: 600px;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-self: flex-start;
+    background-color: blueviolet;
+    box-shadow: 0 -2px 22px 3px rgba(0,0,0,0.75);
+    border-radius: 10px;
+}
+
+.fullName{
+    padding-top: 50px;
+    margin: 0 auto;
+    font-size: 20px;
+}
+.profileImage{
+    border-radius: 5px;
+    max-width: 200px;
+
+}
