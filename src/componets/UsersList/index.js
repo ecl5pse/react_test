@@ -1,38 +1,67 @@
-import React, {Component} from 'react';
-import {loadJson} from '../../utils';
+import React, { Component } from 'react';
+import styles               from './UsersList.module.css';
+import Avatar               from '../Avatar';
+import UserCard             from '../UserCard';
+import {loadJson}           from '../../utils';
 
-class UserList extends Component {
+class UsersList extends Component {
 
-  constructor(props) {
-    super(props);
-
+  constructor (props) {
+    super( props );
     this.state = {
+      isFetching: true,
       users: [],
-      isFetching: false,
       error: null,
     };
   }
 
-  componentDidMount = async ()=>{
-          const  users = await loadJson('./users.json');
-          console.table(users);
-        };
+ componentDidMount () {
 
-  renderUser = () => {
-    const {users} = this.state;
-    return users.map(({id, firstName, lastName}) => {
+loadJson('./users.json' )
+     .then( data => {
+      this.setState( {
+                       users: data,
+                       isFetching: false,
+                     } );
+    } )
+     .catch( err => {
+      this.setState( {
+                       error: err,
+                       isFetching: false,
+                     } );
+    } );
+  }
 
-      return (
-          <li key={id}>
-            {`${firstName} ${lastName}`})
-          </li>);
-    });
-
+  renderUsers = () => {
+    const { users } = this.state;
+    return users.map( user => (
+        <li key={user.id}>
+          <UserCard user={user}/>
+        </li>
+    ) );
   };
 
-  render() {
-    return null;
+  renderAvatar = () => {
+    const { isFetching } = this.state;
+    if (isFetching) {
+      return <Avatar/>;
+    }
+  };
+
+  render () {
+
+    return (
+        <ol className={styles.container}>
+          {
+            this.renderUsers()
+          }
+          {
+            this.renderAvatar()
+          }
+        </ol>
+    );
   }
+
 }
 
-export default UserList;
+export default UsersList;

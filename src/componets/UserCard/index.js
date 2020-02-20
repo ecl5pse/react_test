@@ -1,23 +1,7 @@
-import React, {Component , Fragment} from 'react';
+import React from 'react';
 
-class UserCard extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-
-
-
-
-  render() {
-    return (
-        <Fragment>
-          <div>
-
-          </div>
-        </Fragment>
-    )
-  }
+function UserCard (props) {
+  return null;
 }
 
 export default UserCard;
